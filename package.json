@@ -1,0 +1,25 @@
+{
+  "name": "rsteel_design_app",
+  "version": "1.0.0",
+  "description": "start new app",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "hbs": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/interprodesign/rsteel_design_app/issues"
+  },
+  "homepage": "https://github.com/interprodesign/rsteel_design_app#readme"
+}

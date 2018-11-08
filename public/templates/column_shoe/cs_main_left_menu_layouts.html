@@ -1,0 +1,199 @@
+
+
+<!-- Header -->
+<div class="w3-container" style="margin-top:25px;">
+    <h1 class="w3-text-dark-grey">Column Shoe Layout</h1>
+    <p class="w3-text-dark-grey">Specify column section, reinforcement, anchors and shoe arrangement. Check the
+        help <i class="fa fa-question-circle-o"></i> to get more
+        information about column layout</p>
+</div>
+
+<br>
+
+<!-- Three JS ----------------------------------------------------------------------------------------------------------- -->
+<div class="w3-card w3-margin-left w3-margin-right">
+    <div class="w3-text-white w3-container w3-indigo">
+        <h4><i class="fa fa-cubes" style="font-size:24px"></i> Column Section and Connection 3D View</h4>
+    </div>
+    <div class="w3-container w3-white w3-padding-16 w3-half">
+        <div class="w3-container">
+            <div style="border-color: white;width:100%;" id="cs_column_sec_view" class="jxgbox"></div>
+        </div>
+    </div>
+    <div class="w3-container w3-white w3-padding-16 w3-half">
+
+        <div id="cs_column_3d_view" style="width:100%;"></div>
+
+    </div>
+    <div class="w3-bar w3-white">
+        <a id="cs_refresh_view" class="w3-bar-item w3-button w3-text-white w3-right" style="background-color: #f07d00"><i class="fa fa-refresh w3-xlarge"></i></a>
+    </div>
+</div>
+
+
+
+<!-- Dialog Section dims ----------------------------------------------------------------------------------------------- -->
+<div class="w3-card w3-margin-left w3-margin-right" style="margin-top: 50px">
+    <!-- Dialog header -->
+    <div class="w3-text-white w3-container w3-indigo">
+        <h4><i class="fa fa-th" style="font-size:24px"></i> Column and Grouting Parameters</h4>
+    </div>
+    <!-- Dialog container -->
+    <div class="w3-container w3-white">
+        <!-- Top Row -->
+        <div class="w3-row w3-margin-top">
+            <!-- Column 1 -->
+            <div class="w3-col w3-center" style="width:20%">
+                <div id="cs_sec_image">
+                    <img src="img/column_shoe/cs_select_rect.png" style="width:150px">
+                </div>
+            </div>
+            <!-- Column 2 -->
+            <div class="w3-col w3-margin-left" style="width:20%">
+                <div class="w3-bar-block">
+                    <label><i class="fa fa-cube"></i> Column Sec.</label>
+                    <select id="cs_sect_type" class="w3-select w3-border" name="option">
+                        <option value="rect">Rectangle</option>
+                        <option value="round">Circle</option>
+                    </select>
+                </div>
+                <div class="w3-bar-block w3-margin-top">
+                    <label><i class="fa fa-chain-broken"></i> Column Mat.</label>
+                    <select id="cs_col_concrete_type" class="w3-select w3-border" name="option">
+                        <option value="20">C20/25</option>
+                        <option value="25">C25/30</option>
+                        <option value="30">C30/37</option>
+                        <option value="35">C35/45</option>
+                        <option value="40">C40/50</option>
+                        <option value="45">C45/55</option>
+                        <option value="50">C50/60</option>
+                    </select>
+                    <div id="cs_section_dims">
+                        <label><i class="fa fa-arrows-h w3-margin-top"></i> Width B (mm)</label>
+                        <input id="cs_rect_b" class="w3-input w3-border" type="text">
+                        <label><i class="fa fa-arrows-v w3-margin-top"></i> Height H (mm)</label>
+                        <input id="cs_rect_h" class="w3-input w3-border" type="text">
+                    </div>
+                </div>
+            </div>
+            <!-- Column 3 -->
+            <div class="w3-col w3-margin-left w3-center" style="width:20%">
+                <div>
+                    <img src="img/column_shoe/cs_grouting_plate_t.png" style="width:150px;">
+                </div>
+            </div>
+            <!-- Column 4 -->
+            <div class="w3-col w3-margin-left" style="width:20%">
+                <label><i class="fa fa-chain-broken"></i> Grouting Mat.</label>
+                <select id="cs_grt_concrete_type" class="w3-select w3-border" name="option">
+                    <option value="20">C20/25</option>
+                    <option value="25">C25/30</option>
+                    <option value="30">C30/37</option>
+                    <option value="35">C35/45</option>
+                    <option value="40">C40/50</option>
+                    <option value="45">C45/55</option>
+                    <option value="50">C50/60</option>
+                </select>
+                <label><i class="fa fa-arrows-h w3-margin-top"></i> Grouting b<sub>g</sub> (mm)</label>
+                <input id="cs_grouting_bg" class="w3-input w3-border" type="text" value="50">
+                <label><i class="fa fa-arrows-v w3-margin-top"></i> Grouting t<sub>g</sub> (mm)</label>
+                <input id="cs_grouting_tg" class="w3-input w3-border" type="text" value="100">
+                <label><i class="fa fa-arrows-v w3-margin-top"></i> Base Plate t<sub>p</sub> (mm)</label>
+                <input id="cs_base_tp" class="w3-input w3-border" type="text" value="400" style="margin-bottom:2px;">
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+<!-- Dialog Shoe ----------------------------------------------------------------------------------------------- -->
+<div class="w3-card w3-margin-left w3-margin-right" style="margin-top:50px">
+    <!-- Dialog header -->
+    <div class="w3-text-white w3-container w3-indigo">
+        <h4><i class="fa fa-th" style="font-size:24px"></i> Column Shoe Arrangement</h4>
+    </div>
+    <!-- Dialog conctent -->
+    <div class="w3-container w3-white">
+        <!-- ROW TOP -->
+        <div class="w3-row w3-margin-top">
+            <!-- Column 1 -->
+            <div class="w3-col w3-margin-left" style="width:20%">
+                <div class="w3-bar-block">
+                    <label><i class="fa fa-shirtsinbulk"></i> Shoe type</label>
+                    <select id="cs_shoe_type" class="w3-select w3-border" name="option">
+                        <option value="RPK-N2">RPK-N2 Shoe</option>
+                        <option value="RPK-E2">RPK-E2 Shoe</option>
+                    </select>
+                    <label><i class="fa fa-minus w3-margin-top"></i> Base Bolt</label>
+                    <select id="cs_bolt_type" class="w3-select w3-border" name="option">
+                        <option value="RPP-P">RPP-P</option>
+                        <option value="RPP-L">RPP-L</option>
+                        <option value="RPP-E-P">RPP-E-P</option>
+                        <option value="RPP-E-L">RPP-E-L</option>
+                    </select>
+                    <label><i class="fa fa-circle w3-margin-top"></i> Bolt Dim.</label>
+                    <select id="cs_bolt_dim" class="w3-select w3-border" name="option">
+                    </select>
+                </div>
+            </div>
+            <!-- Column 2 -->
+            <div class="w3-col" style="width:20%">
+                <div id="cs_shoe_image" class="w3-bar-block w3-center">
+                </div>
+            </div>
+            <!-- Column 3 -->
+            <div class="w3-col w3-margin-left" style="width:20%">
+                <div id="cs_rect_shoes_data_1" class="w3-bar-block">
+                </div>
+            </div>
+            <!-- Column 4 -->
+            <div class="w3-col w3-margin-left" style="width:20%">
+                <div id="cs_rect_shoes_data_2" class="w3-bar-block">
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<!-- Dialog reinforcement ------------------------------------------------------------------------------------------------------- -->
+<div class="w3-card w3-margin-left w3-margin-right" style="margin-top:50px">
+    <!-- Dialog header -->
+    <div class="w3-text-white w3-container w3-indigo">
+        <h4><i class="fa fa-th" style="font-size:24px"></i> Column Section Reinforcement</h4>
+    </div>
+    <!-- Dialog conctent -->
+    <div class="w3-container w3-white">
+        <div id="cs_sec_rebar_inputs">
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!-- LAYOUT JS -->
+<script type="text/javascript" src="js/column_shoe/cs_layout.js"></script>
+<script type="text/javascript" src="js/column_shoe/cs_layout_jsx.js"></script>
+<script type="text/javascript" src="js/column_shoe/cs_three.js"></script>
+<script>
+
+    // Rebar Layer Tab event ----------------------------------------------------------------------
+    function layerTab(evt, layerNum) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        };
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-border-indigo", "");
+        };
+        document.getElementById(layerNum).style.display = "block";
+        evt.currentTarget.firstElementChild.className += " w3-border-indigo";
+    };
+
+</script>
+
