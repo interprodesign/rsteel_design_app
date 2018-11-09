@@ -1,109 +1,121 @@
+<div id="loads_container">
 
+    <!-- Header -->
+    <div class="w3-container" style="margin-top:25px;">
+        <h1 class="w3-text-dark-grey">Action effects to be considered in analysis</h1>
+        <p class="w3-text-dark-grey">The loads that must be considered for column shoe connection before grouting
+            (Stage I)
+            and after the grout has hardened (Stage II). Check the help <i class="fa fa-question-circle-o"></i> to get
+            more
+            information about load applying</p>
+    </div>
 
+    <br>
 
-<!-- Header -->
-<div class="w3-container" style="margin-top:25px;">
-    <h1 class="w3-text-dark-grey">Action effects to be considered in analysis</h1>
-    <p class="w3-text-dark-grey">The loads that must be considered for column shoe connection before grouting (Stage I)
-        and after the grout has hardened (Stage II). Check the help <i class="fa fa-question-circle-o"></i> to get more
-        information about load applying</p>
+    <!-- Stage I Loads --------------------------------------------------------------------------- -->
+    <div class="w3-card w3-white w3-margin-left w3-margin-right">
+        <div class="w3-container w3-indigo">
+            <h4><i class="fa fa-table" style="font-size:24px"></i> Column Loads before grouting (Stage I)</h4>
+        </div>
+        <div class="w3-container">
+            <div class="w3-row w3-margin-top">
+                <div class="w3-container w3-quarter">
+                </div>
+                <div class="w3-container w3-quarter w3-center w3-margin-top">
+                    <img src="img/column_shoe/cs_before_grt.png" alt="section forces" style="width:100%;margin-top:20px">
+                </div>
+                <div class="w3-container w3-quarter w3-center w3-margin-top">
+                    <img src="img/column_shoe/cs_anchor.png" alt="section forces" style="width:100%">
+                </div>
+                <div class="w3-container w3-quarter">
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-container">
+                    <h5>Load Cases (Anchors Section)</h5>
+                    <div style="z-index:0;" id="cs_load_anchor" class="hot" style="width:100%;"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!-- Stage II Loads ----------------------------------------------------------------------------- -->
+    <div class="w3-card w3-white w3-margin-left w3-margin-right" style="margin-top:50px">
+        <div class="w3-container w3-indigo">
+            <h4><i class="fa fa-table" style="font-size:24px"></i> Column Loads after grouting (Stage II)</h4>
+        </div>
+        <div class="w3-container">
+            <div class="w3-row w3-margin-top">
+                <div class="w3-container w3-quarter">
+                </div>
+                <div class="w3-container w3-quarter w3-center w3-margin-top">
+                    <img src="img/column_shoe/cs_after_grt.png" alt="section forces" style="width:100%;margin-top:20px">
+                </div>
+                <div class="w3-container w3-quarter w3-center w3-margin-top">
+                    <img src="img/column_shoe/cs_loads_rect.png" alt="section forces" style="width:100%">
+                </div>
+                <div class="w3-container w3-quarter">
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-container">
+                    <h5>Load Cases for Ultimate Strength (Column Section)</h5>
+                    <div style="z-index:0;" id="cs_load_column_ULS" class="hot" style="width:100%;"></div>
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-container">
+                    <h5>Load Cases for Ultimate Strength (Grouting Section)</h5>
+                    <div style="z-index:0;" id="cs_load_grouting_ULS" class="hot" style="width:100%;"></div>
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-container">
+                    <h5>Load Cases for Serviceability (Column Section)</h5>
+                    <div style="z-index:0;" id="cs_load_column_SLS" class="hot" style="width:100%;"></div>
+                </div>
+            </div>
+            <div class="w3-row">
+                <div class="w3-container">
+                    <h5>Load Cases for Serviceability (Grouting Section)</h5>
+                    <div style="z-index:0;" id="cs_load_grouting_SLS" class="hot" style="width:100%;"></div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
 </div>
 
-<br>
-
-<!-- Stage I Loads --------------------------------------------------------------------------- -->
-<div class="w3-card w3-margin-left w3-margin-right">
-    <div class="w3-container w3-indigo">
-        <h4><i class="fa fa-table" style="font-size:24px"></i> Column Loads before grouting (Stage I)</h4>
-    </div>
-    <div class="w3-container w3-white">
-        <div class="w3-row w3-margin-top">
-            <div class="w3-container w3-quarter">
-            </div>
-            <div class="w3-container w3-quarter w3-center w3-margin-top">
-                <img src="img/cs_before_grt.png" alt="section forces" style="width:100%;margin-top:20px">
-            </div>
-            <div class="w3-container w3-quarter w3-center w3-margin-top">
-                <img src="img/cs_anchor.png" alt="section forces" style="width:100%">
-            </div>
-            <div class="w3-container w3-quarter">
-            </div>
-        </div>
-        <div class="w3-row">
-            <div class="w3-container">
-                <h5>Load Cases (Anchors Section)</h5>
-                <div id="cs_load_anchor" class="hot" style="width:100%;"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Stage II Loads ----------------------------------------------------------------------------- -->
-<div class="w3-card w3-margin-left w3-margin-right" style="margin-top:50px">
-    <div class="w3-container w3-indigo">
-        <h4><i class="fa fa-table" style="font-size:24px"></i> Column Loads after grouting (Stage II)</h4>
-    </div>
-    <div class="w3-container w3-white">
-        <div class="w3-row w3-margin-top">
-            <div class="w3-container w3-quarter">
-            </div>
-            <div class="w3-container w3-quarter w3-center w3-margin-top">
-                <img src="img/cs_after_grt.png" alt="section forces" style="width:100%;margin-top:20px">
-            </div>
-            <div class="w3-container w3-quarter w3-center w3-margin-top">
-                <img src="img/cs_loads_rect.png" alt="section forces" style="width:100%">
-            </div>
-            <div class="w3-container w3-quarter">
-            </div>
-        </div>
-        <div class="w3-row">
-            <div class="w3-container">
-                <h5>Load Cases (Column Section)</h5>
-                <div id="cs_load_grouting" class="hot" style="width:100%;"></div>
-            </div>
-        </div>
-        <div class="w3-row">
-            <div class="w3-container">
-                <h5>Load Cases (Grouting Section)</h5>
-                <div id="cs_load_column" class="hot" style="width:100%;"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
 
 <script>
-    
-    // Table - deck node coordinates --------------------------------------------------------------------------------------------------------------------
-    var loads_anchor = document.getElementById("cs_load_anchor");
-    var loads_grouting = document.getElementById("cs_load_grouting");
-    var loads_column = document.getElementById("cs_load_column");
-    var loads_before_settings = {
-        colHeaders: ['N<sub>Ed</sub> (kN)', 'M<sub>Edx</sub> (kN-m)', 'M<sub>Edy</sub> (kN-m)', 'V<sub>Edx</sub> (kN)', 'V<sub>Edy</sub> (kN)', 'Notes'],
-        rowHeaders: true,
-        maxCols: 6,
-        startRows: 5,
-        minSpareRows: 1,
-        height: 160,
-        stretchH: 'all',
-        columns: [
-            { type: 'numeric', format: '0.00' },
-            { type: 'numeric', format: '0.00' },
-            { type: 'numeric', format: '0.00' },
-            { type: 'numeric', format: '0.00' },
-            { type: 'numeric', format: '0.00' },
-            { type: 'text', }
-        ]
-    };
-    var cs_anchor = new Handsontable(loads_anchor, loads_before_settings);
-    var cs_grouting = new Handsontable(loads_grouting, loads_before_settings);
-    var cs_column = new Handsontable(loads_column, loads_before_settings);
 
+    jQuery(function () {
 
-    jQuery("#cs_refresh_view").unbind().click(function () {
-        var cs_anchor = new Handsontable(loads_anchor, loads_before_settings);
-        var cs_grouting = new Handsontable(loads_grouting, loads_before_settings);
-        var cs_column = new Handsontable(loads_column, loads_before_settings);
+        CS_MENU_DATA.initTableData();
+        
+        jQuery('#cs_load_anchor').change(function (event) {
+            CS_MENU_DATA.table_changes[jQuery(this).attr('id')] = true;
+        });
+
+        jQuery('#cs_load_grouting_ULS').change(function (event) {
+            CS_MENU_DATA.table_changes[jQuery(this).attr('id')] = true;
+        });
+        
+        jQuery('#cs_load_column_ULS').change(function (event) {
+            CS_MENU_DATA.table_changes[jQuery(this).attr('id')] = true;
+        });
+
+        jQuery('#cs_load_grouting_SLS').change(function (event) {
+            CS_MENU_DATA.table_changes[jQuery(this).attr('id')] = true;
+        });
+
+        jQuery('#cs_load_column_SLS').change(function (event) {
+            CS_MENU_DATA.table_changes[jQuery(this).attr('id')] = true;
+        });
+
     });
+
 </script>

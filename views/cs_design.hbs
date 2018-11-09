@@ -19,10 +19,11 @@
         <script src="http://threejs.org/build/three.min.js"></script>
         <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
 
+        <script src="js/column_shoe/cs_menu_saving_data.js"></script>
+
         <style>
 
             body {font-family: "Poppins", sans-serif};
-            body { font-family: "Poppins", sans-serif};
 
         </style>
     </head>
@@ -31,7 +32,7 @@
 
         <!-- Sidebar/menu -->
         <nav class="w3-sidebar w3-bar-block w3-theme-l1 w3-padding w3-collapse w3-top" style="width:250px;font-weight:bold;z-index:3;" id="Sidebar">
-            <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hover-color-black w3-hide-large w3-display-topleft w3-hover-light-grey"
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hover-color-black w3-hide-large w3-display-topleft w3-hover-orange"
             style="width:100%;font-size:18px">Close</a>
             <br>
             <br>
@@ -60,7 +61,7 @@
 
         <!-- Top menu on small screens -->
         <header class="w3-container w3-top w3-hide-large w3-light-grey w3-xlarge w3-padding">
-            <a href="javascript:void(0)" class="w3-button w3-light-grey w3-border w3-margin-right" onclick="w3_open()">☰</a>
+            <a href="javascript:void(0)" class="w3-button w3-light-grey w3-hover-orange w3-margin-right" onclick="w3_open()">☰</a>
         </header>
 
         <!-- Overlay effect when opening sidebar on small screens -->
@@ -76,7 +77,6 @@
         <!-- Page content -->
         <div id="app_page" class="w3-main w3-light-grey" style="margin-left:280px;max-width:1100px;margin-right:40px"></div>
 
-
         <script>
 
             // Script to open and close sidebar -----------------------------------------------------
@@ -90,7 +90,14 @@
             };
 
             // Init index page
+            var curr_tab;
+            var last_tab = "cs_main_left_menu_details"; 
+
             jQuery(function(){
+
+                // Init first tab
+                // Load content
+                jQuery("#app_page").load("templates/column_shoe/cs_main_left_menu_details.html");
 
                 // Delete selected menu tab color
                 function removeSelectMenu(){
@@ -101,18 +108,19 @@
 
                 // Load page content
                 jQuery("#cs_main_left_menu a").click(function(){
+
+                    curr_tab = jQuery(this).attr("id");
+                    
                     // Add selection to menu tab
                     removeSelectMenu();
                     jQuery(this).addClass(' w3-light-grey');
+                            
                     // Load content
-                    jQuery("#app_page").load("templates/column_shoe/" + jQuery(this).attr("id") + ".html", function (responseTxt, statusTxt, xhr) {
-                        /*
-                        if (statusTxt == "success")
-                            console.log("External content loaded successfully!");
-                        if (statusTxt == "error")
-                            console.log("Error: " + xhr.status + ": " + xhr.statusText);
-                        */
-                    });
+                    jQuery("#app_page").load("templates/column_shoe/" + curr_tab + ".html");
+
+                    if (last_tab == "cs_main_left_menu_loads") CS_MENU_DATA.updateTableData();
+
+                    last_tab = jQuery(this).attr("id");            
                 });
             });
 

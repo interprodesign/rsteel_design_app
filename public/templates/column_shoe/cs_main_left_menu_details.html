@@ -11,7 +11,7 @@
     <div class="w3-container w3-indigo">
         <h4><i class="fa fa-th"></i> Project Details</h4>
     </div>
-    <div class="w3-container w3-white">
+    <div id="details_container" class="w3-container w3-white">
         <div class="w3-row-padding w3-margin-top">
             <div class="w3-col" style="width:33%">
                 <label><i class="fa fa-user-o"></i> Name</label>
@@ -64,7 +64,19 @@
     </div>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
 
 
+<script>
 
+    jQuery(function(){
+
+        CS_MENU_DATA.initDetails();
+
+        jQuery('#details_container').change(function(event){
+            CS_MENU_DATA.details_container[event.target.id] = jQuery('#' + event.target.id).val();
+        });
+
+    });
+
+</script>

@@ -101,6 +101,7 @@ CS_LAYOUT = (function () {
     var initSectioninputs = function (sec_type) {
 
         function initChangeEvents(sec_type) {
+
             if (sec_type == 'rect') {
                 for (var i in ids_rect_arr_1) {
                     jQuery(ids_rect_arr_1[i]).unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw() });
@@ -112,19 +113,20 @@ CS_LAYOUT = (function () {
                 };
             }
             else if (sec_type == 'round') {
-                jQuery("#cs_diam_D").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_cover_1").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_cover_2").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_reb_num_1").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_reb_num_2").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_reb_diam_1").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_reb_diam_2").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-                jQuery("#cs_round_shoe_num").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_diam_D").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_cover_1").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_cover_2").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_reb_num_1").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_reb_num_2").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_reb_diam_1").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_reb_diam_2").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+                jQuery("#cs_round_shoe_num").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
             };
-            jQuery("#cs_bolt_dim").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-            jQuery("#cs_grouting_bg").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-            jQuery("#cs_grouting_tg").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
-            jQuery("#cs_base_tp").on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+
+            jQuery("#cs_bolt_dim").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+            jQuery("#cs_grouting_bg").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+            jQuery("#cs_grouting_tg").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
+            jQuery("#cs_base_tp").unbind().on('change', function () { CS_LAYOUT_JSX.initRebarDraw(); });
         };
 
 
@@ -238,6 +240,12 @@ CS_LAYOUT = (function () {
                         </a>\
                         </div>');
 
+            var rebar_content = '<label><i class="fa fa-chain-broken w3-margin-top"></i> Steel</label>\
+                                <select id="cs_rect_mat_rebar" class="w3-select w3-border" name="option">\
+                                <option value="400">Class A400</option>\
+                                <option value="500">Class B500</option>\
+                                <option value="600">Class C600</option>\
+                                </select>';
             for (i = 1; i <= 2; i++) {
                 jQuery("#cs_sec_rebar_inputs").append('\
                         <div id =\"layer_'+ i + '\" class= \"w3-container w3-margin-top city\" style = \"display:' + ((i == 1) ? "block" : "none") + '\">\
@@ -283,12 +291,7 @@ CS_LAYOUT = (function () {
                         <div class="w3-col w3-margin-left" style="width:20%">\
                         <label><i class="fa fa-window-maximize"></i> Cover (mm)</label>\
                         <input id="cs_cover_'+ i + '" class="w3-input w3-border" type="text" value="0">\
-                        <label><i class="fa fa-chain-broken w3-margin-top"></i> Steel</label>\
-                        <select class="w3-select w3-border" name="option">\
-                        <option value="400">Class A400</option>\
-                        <option value="500">Class B500</option>\
-                        <option value="600">Class C600</option>\
-                        </select>\
+                        '+ ((i == 1) ? rebar_content : '') + '\
                         </div>\
                         </div>\
                         <!-- ROW BOTTOM -->\
@@ -375,7 +378,7 @@ CS_LAYOUT = (function () {
                     <input id="cs_round_cover_2" class="w3-input w3-border" type="text" value="0">\
                     </div>\
                     <label><i class="fa fa-chain-broken w3-margin-top"></i> Steel</label>\
-                    <select class="w3-select w3-border" name="option">\
+                    <select id="cs_round_mat_rebar" class="w3-select w3-border" name="option">\
                     <option value="400">Class A400</option>\
                     <option value="500">Class B500</option>\
                     <option value="600">Class C600</option>\
@@ -386,11 +389,11 @@ CS_LAYOUT = (function () {
                     <div class="w3-bar-block">\
                     <div>\
                     <label><i class="fa fa-dot-circle-o"></i> Layer 1 (num)</label>\
-                    <input id="cs_round_reb_num_1" class="w3-input w3-border" type="number" value="0" name="Adults" min="0" max="5">\
+                    <input id="cs_round_reb_num_1" class="w3-input w3-border" type="number" value="0" name="Adults" min="0" max="20">\
                     </div>\
                     <div>\
                     <label><i class="fa fa-dot-circle-o w3-margin-top"></i> Layer 2 (num)</label>\
-                    <input id="cs_round_reb_num_2" class="w3-input w3-border" type="number" value="0" name="Adults" min="0" max="5">\
+                    <input id="cs_round_reb_num_2" class="w3-input w3-border" type="number" value="0" name="Adults" min="0" max="20">\
                     </div>\
                     </div>\
                     </div>\
@@ -422,26 +425,23 @@ CS_LAYOUT = (function () {
 
 
 
-
-
-
-
-
 jQuery(document).ready(function () {
 
-
-    // Slect shoe type event ----------------------------------------------------------------
+    // Select shoe type event ----------------------------------------------------------------
     jQuery("#cs_shoe_type").change(function () {
         CS_LAYOUT.initShoeTypes(jQuery(this).val(), true);
     });
 
-    // Slect bolt type event ----------------------------------------------------------------
+    // Select bolt type event ----------------------------------------------------------------
     jQuery("#cs_bolt_type").change(function () {
         CS_LAYOUT.initBoltDims(jQuery(this).val());
     });
 
     // Select section type event ------------------------------------------------------------
     jQuery("#cs_sect_type").change(function () {
+        CS_MENU_DATA.layout_container.layout_saved = true;
+        CS_MENU_DATA.layout_container.data = {};
+        CS_MENU_DATA.layout_container.init_sec = jQuery(this).val(); 
         CS_LAYOUT.initSectioninputs(jQuery(this).val());
         CS_LAYOUT.initSecDefaultData(jQuery(this).val());
         CS_LAYOUT_JSX.initRebarDraw();
@@ -450,25 +450,24 @@ jQuery(document).ready(function () {
     // Init column section deck  
     jQuery("#cs_column_sec_view").height(jQuery("#cs_column_sec_view").width());
 
-
-    // Init starting section ----------------------------------------------------------------
-    var init_sec = "rect";
-    var init_shoe = "RPK-N2"
-    var init_bolt = "RPP-P";
-    CS_LAYOUT.initSectioninputs(init_sec);
-    CS_LAYOUT.initShoeTypes(init_shoe, false);
-    CS_LAYOUT.initBoltDims(init_bolt);
-    CS_LAYOUT.initRebarDiams();
-    CS_LAYOUT.initSecDefaultData(init_sec);
-    CS_LAYOUT_JSX.initRebarDraw();
-
-
+    // Refresh all drawings 
     jQuery("#cs_refresh_view").unbind().click(function () {
         CS_LAYOUT_JSX.initRebarDraw();
     });
 
-    jQuery(window).on('resize',function () {
+    // Resize window
+    jQuery(window).on('resize', function () {
+        jQuery("#cs_column_sec_view").height(jQuery("#cs_column_sec_view").width());
         CS_LAYOUT_JSX.initRebarDraw();
+    });
+
+    // Init data
+    CS_MENU_DATA.initLayout();
+
+    jQuery('#layout_container').change(function (event) {
+        CS_MENU_DATA.layout_container.layout_saved = true;
+        if (event.target.type == "checkbox") CS_MENU_DATA.layout_container.data[event.target.id] = event.target.checked;
+        else CS_MENU_DATA.layout_container.data[event.target.id] = jQuery('#' + event.target.id).val();
     });
 
 });

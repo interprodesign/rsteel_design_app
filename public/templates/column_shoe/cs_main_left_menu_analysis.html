@@ -1,0 +1,62 @@
+<!-- Header -->
+<div class="w3-container" style="margin-top:25px;">
+    <h1 class="w3-text-dark-grey ">Analisys of Column Shoe</h1>
+    <p class="w3-text-dark-grey">Click <b>Analysis</b> to perform the calculation of column connection at erection and
+        final stage</p>
+</div>
+
+<br>
+
+<!-- Page content -->
+<div class="w3-margin-left w3-margin-right" style="width:100%">
+
+    <div class="w3-row">
+        <div class="w3-col" style="width:40%">
+            <p></p>
+        </div>
+        <div class="w3-col w3-bar-block w3-center" style="width:20%">
+            <i class="w3-bar-item fa fa-laptop w3-text-orange" style="font-size:75px;"></i>
+            <button id="cs_run_analysis" class="w3-round-large w3-bar-item w3-text-white w3-button w3-orange w3-xlarge">Analysis</button>
+        </div>
+        <div class="w3-col" style="width:40%">
+            <p></p>
+        </div>
+    </div>
+
+
+
+</div>
+
+<br><br>
+
+<script src="js/column_shoe/cs_analysis_data.js"></script>
+
+<script>
+
+    jQuery(function () {
+
+        jQuery("#cs_run_analysis").click(function () {
+
+            CS_ANALYSIS_DATA.collectData();
+            var send = CS_ANALYSIS_DATA.data;
+
+            console.log(send)
+
+            jQuery.ajax({
+                type: "POST",
+                url: "/cs_analysis",
+                data: JSON.stringify(send),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                },
+            });
+
+
+        });
+
+
+    });
+
+</script>

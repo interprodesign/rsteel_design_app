@@ -181,12 +181,14 @@ CS_LAYOUT_JSX = (function () {
 
     var updated_shoe_coord = [];
     var updated_bolt_coord = [];
+    var updated_rebar_coord = [];
 
     
     var initRebarDraw = function () {
 
         updated_shoe_coord = [];
         updated_bolt_coord = [];
+        updated_rebar_coord = [];
 
         var section_type = jQuery("#cs_sect_type").val();
 
@@ -580,7 +582,10 @@ CS_LAYOUT_JSX = (function () {
                 else var sub_angle = 0;
                 var angle = 0;
                 for (var i = 0; i < layer_1; i++) {
-                    Layers_board.create('circle', [rotate(0, 0, 0, 0.5 * col_diam - cover_1, angle, 0.5 * reb_1), 0.5 * reb_1], { strokeColor: 'red', fillColor: 'red', fixed: true, highlight: false });
+                    var coord_xy = rotate(0, 0, 0, 0.5 * col_diam - cover_1, angle, 0.5 * reb_1); 
+                    var coord_diam = 0.5 * reb_1;
+                    Layers_board.create('circle', [coord_xy, coord_diam], { strokeColor: 'red', fillColor: 'red', fixed: true, highlight: false });
+                    updated_rebar_coord.push([coord_xy, coord_diam]);
                     angle += sub_angle;
                 };
             };
@@ -589,13 +594,17 @@ CS_LAYOUT_JSX = (function () {
                 else var sub_angle = 0;
                 var angle = 0;
                 for (var i = 0; i < layer_2; i++) {
-                    Layers_board.create('circle', [rotate(0, 0, 0, 0.5 * col_diam - cover_2, angle, 0.5 * reb_2), 0.5 * reb_2], { strokeColor: 'red', fillColor: 'red', fixed: true, highlight: false });
+                    var coord_xy = rotate(0, 0, 0, 0.5 * col_diam - cover_2, angle, 0.5 * reb_2);
+                    var coord_diam = 0.5 * reb_2;
+                    Layers_board.create('circle', [coord_xy, coord_diam], { strokeColor: 'red', fillColor: 'red', fixed: true, highlight: false });
+                    updated_rebar_coord.push([coord_xy, coord_diam]);
                     angle += sub_angle;
                 };
             };
         };
 
-        CS_THREE.initThreeView(updated_shoe_coord, updated_bolt_coord)
+        CS_THREE.initThreeView(updated_shoe_coord, updated_bolt_coord);
+        // CS_MENU_DATA.
     };
 
 
